@@ -1,0 +1,9 @@
+{
+  "selectors": {
+    "baseLogo": "[data-ym-target=menu_logo]",
+    "loginBtn": "[data-testid='topbar.login']",
+    "signupBtn": "[data-ym-target=menu_top_entry]",
+    "signupContainer": "[data-role=signup-container]",
+    "title": ".x-title"
+  }
+}
