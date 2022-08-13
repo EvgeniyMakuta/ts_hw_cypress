@@ -1,8 +1,6 @@
 node_modules
 .idea
+*.xml
 cypress/videos
 cypress/screenshots
-cypress/integration/1-getting-started
-cypress/integration/2-advanced-examples
-cypress/fixtures/profile.json
-cypress/fixtures/users.json
+allure-results

@@ -8,7 +8,7 @@ describe('Smoke tests of drive2.ru site', () => {
     beforeEach(() => {
         cy.visit("/");
     })
-    it('Home page open', () => {
+    it.only('Home page open', () => {
         cy.get(base.selectors.baseLogo).should("be.visible");
     });
     it('Signup page open', function () {
@@ -24,7 +24,7 @@ describe('Smoke tests of drive2.ru site', () => {
         cy.get(login.selectors.forgotPassword).click();
         cy.url().should("contain", "/recovery/");
     });
-    it.only('Login with wrong credentials', function () {
+    it('Login with wrong credentials', function () {
         cy.get(base.selectors.loginBtn).click();
         cy.login(data.login.wrongEmail, data.login.wrongPassword);
         cy.get(login.selectors.loginErrorMsg).should("be.visible").and("contain.text", "Если вы не можете войти, обратитесь в")
