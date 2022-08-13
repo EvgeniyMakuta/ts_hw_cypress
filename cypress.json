@@ -1,1 +1,5 @@
-{}
+{
+  "baseUrl": "https://www.drive2.ru/",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080
+}
