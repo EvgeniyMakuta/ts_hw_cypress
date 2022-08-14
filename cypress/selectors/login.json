@@ -1,0 +1,12 @@
+{
+  "selectors": {
+    "emailField": "#login",
+    "passwordField": "#password",
+    "loginForm": "#fullloginform",
+    "loginBtn": "[data-ym-target=login_from_reception_by_email]",
+    "signupBtn": "[href='/signup/']",
+    "forgotPassword": "[href='/recovery/']",
+    "rememberMe": "#rememberMe",
+    "loginErrorMsg": ".validation-summary-errors"
+  }
+}

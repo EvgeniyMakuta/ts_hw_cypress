@@ -1,5 +1,5 @@
-import * as search from "../fixtures/search";
-import login from "../fixtures/login.json";
+import * as search from "../selectors/search";
+import login from "../selectors/login.json";
 
 Cypress.Commands.add('searchByText', (searchedText: string): void => {
     cy.intercept("GET", `**text=${searchedText}`).as("waitText");

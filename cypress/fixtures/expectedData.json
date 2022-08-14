@@ -1,0 +1,8 @@
+{
+  "expectedText": {
+    "searchByText": "BMW",
+    "searchByLogo": "Ford",
+    "searchByTextBrand": "Audi",
+    "loginErrorMsg": "Если вы не можете войти, обратитесь в"
+  }
+}

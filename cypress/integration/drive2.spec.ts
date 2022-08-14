@@ -1,14 +1,16 @@
-import base from "../fixtures/base.json";
-import login from "../fixtures/login.json";
-import * as search from "../fixtures/search";
-import data from "../fixtures/data.json"
+import base from "../selectors/base.json";
+import login from "../selectors/login.json";
+import * as search from "../selectors/search";
+import expectedData from "../fixtures/expectedData.json";
+import loginData from "../fixtures/login.json";
 
 
 describe('Smoke tests of drive2.ru site', () => {
     beforeEach(() => {
         cy.visit("/");
     })
-    it.only('Home page open', () => {
+    it('Home page open', () => {
+        cy.fixture('login').as('users');
         cy.get(base.selectors.baseLogo).should("be.visible");
     });
     it('Signup page open', function () {
@@ -24,24 +26,24 @@ describe('Smoke tests of drive2.ru site', () => {
         cy.get(login.selectors.forgotPassword).click();
         cy.url().should("contain", "/recovery/");
     });
-    it('Login with wrong credentials', function () {
+    it.only('Login with wrong credentials', function () {
         cy.get(base.selectors.loginBtn).click();
-        cy.login(data.login.wrongEmail, data.login.wrongPassword);
-        cy.get(login.selectors.loginErrorMsg).should("be.visible").and("contain.text", "Если вы не можете войти, обратитесь в")
+        cy.login(loginData.login.wrongEmail, loginData.login.wrongPassword);
+        cy.get(login.selectors.loginErrorMsg).should("be.visible").and("contain.text", expectedData.expectedText.loginErrorMsg)
     });
     it('Search by text', function () {
-        cy.searchByText(data.expectedText.searchByText);
-        cy.url().should("contain", `/search?text=${data.expectedText.searchByText}`);
-        cy.get(search.selectors.searchResults).eq(0).should("contain.text", data.expectedText.searchByText)
+        cy.searchByText(expectedData.expectedText.searchByText);
+        cy.url().should("contain", `/search?text=${expectedData.expectedText.searchByText}`);
+        cy.get(search.selectors.searchResults).eq(0).should("contain.text", expectedData.expectedText.searchByText)
     });
     it('Search by logo brand', function () {
-        cy.searchByLogoBrand(data.expectedText.searchByLogo);
-        cy.url().should("contain", `/experience/${data.expectedText.searchByLogo.toLowerCase()}/`);
-        cy.get(base.selectors.title).should("contain.text", data.expectedText.searchByLogo)
+        cy.searchByLogoBrand(expectedData.expectedText.searchByLogo);
+        cy.url().should("contain", `/experience/${expectedData.expectedText.searchByLogo.toLowerCase()}/`);
+        cy.get(base.selectors.title).should("contain.text", expectedData.expectedText.searchByLogo)
     });
     it('Search by text brand', function () {
-       cy.searchByTextBrand(data.expectedText.searchByTextBrand);
-        cy.url().should("contain", `/experience/${data.expectedText.searchByTextBrand.toLowerCase()}/`);
-        cy.get(base.selectors.title).should("contain.text", data.expectedText.searchByTextBrand)
+       cy.searchByTextBrand(expectedData.expectedText.searchByTextBrand);
+        cy.url().should("contain", `/experience/${expectedData.expectedText.searchByTextBrand.toLowerCase()}/`);
+        cy.get(base.selectors.title).should("contain.text", expectedData.expectedText.searchByTextBrand)
     });
 })
